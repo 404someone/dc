@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-import sdk, { type Context } from "@farcaster/miniapp-sdk";
+import sdk from "@farcaster/miniapp-sdk";
+//import sdk, { type Context } from "@farcaster/miniapp-sdk";
 
 export default function Main() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
