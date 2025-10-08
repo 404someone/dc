@@ -4,12 +4,12 @@ import sdk, { type Context } from "@farcaster/miniapp-sdk";
 
 export default function Main() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  const [context, setContext] = useState<Context.MiniAppContext>();
+ /// const [context, setContext] = useState<Context.MiniAppContext>();
 
   useEffect(() => {
     const load = async () => {
-      const context = await sdk.context;
-      setContext(context);
+   //   const context = await sdk.context;
+      //setContext(context);
       sdk.actions.ready({});
     };
     if (sdk && !isSDKLoaded) {
@@ -22,30 +22,28 @@ export default function Main() {
   }, [isSDKLoaded]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-6">
-      <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md text-center transform transition duration-300 hover:scale-105">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          🔄 Domain Updated
-        </h1>
-        <p className="text-gray-600 mb-6">
-          This miniapp has moved to a new domain. Please continue there to use
-          the latest version.
-        </p>
-        <button
-          onClick={() => {
-            if (!context) {
-              window.open("https://counter.itscashless.com", "_blank");
-            } else {
-              sdk.actions.openMiniApp({
-                url: "https://counter.itscashless.com",
-              });
-            }
-          }}
-          className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:from-indigo-600 hover:to-purple-700 transition duration-300"
+    <div className="min-h-screen w-full bg-yellow-50 flex flex-col items-center justify-center text-yellow-800 text-center px-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6"
         >
-          Open New Domain →
-        </button>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+          />
+        </svg>
+
+        <h2 className="text-xl font-semibold mb-2">
+          Sorry for the inconvenience
+        </h2>
+        <p className="text-base">
+          This miniapp is currently undergoing maintenance.
+        </p>
       </div>
-    </div>
   );
 }
